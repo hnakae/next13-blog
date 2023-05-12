@@ -3,7 +3,7 @@ import axios from "axios";
 
 // interface pageProps {}
 
-export const revalidate = 10;
+// export const revalidate = 10;
 
 const page = async ({}) => {
   //   const res = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
