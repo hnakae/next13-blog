@@ -15,3 +15,9 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+:root,
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+}

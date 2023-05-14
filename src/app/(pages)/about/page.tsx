@@ -3,7 +3,7 @@ import axios from "axios";
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const page = async () => {
-  // await wait(3000);
+  await wait(3000);
 
   const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"

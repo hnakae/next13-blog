@@ -12,4 +12,4 @@ const loading: FC<loadingProps> = ({}) => {
 
 export default loading;
 
-//Loading staate for server components
+//Loading state is for server components only!

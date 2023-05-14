@@ -3,15 +3,31 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const user = await prisma.user.upsert({
-    where: { email: "test@test.com" },
+  const post1 = await prisma.post.upsert({
+    where: { id: 1 },
     update: {},
     create: {
-      email: "test@test.com",
-      name: "Test User",
+      title: "post1",
+      content: "content1",
     },
   });
-  console.log({ user });
+  const post2 = await prisma.post.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      title: "post2",
+      content: "content2",
+    },
+  });
+  const post3 = await prisma.post.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      title: "post3",
+      content: "content3",
+    },
+  });
+  // console.log({ post });
 }
 main()
   .then(() => prisma.$disconnect())

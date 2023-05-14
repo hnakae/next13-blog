@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { FC } from "react";
+import { prisma } from "../../../../../lib/prisma";
 
 interface PageProps {
   params: {
@@ -15,18 +16,24 @@ type Post = {
 };
 
 //dynamic metadata
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const res = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params.postid}`
-  );
-  const data = (await res.json()) as Post;
-  return { title: `post ${data.id}` };
-}
+// export async function generateMetadata({
+//   params,
+// }: PageProps): Promise<Metadata> {
+//   const res = await fetch(
+//     `https://jsonplaceholder.typicode.com/posts/${params.postid}`
+//   );
+//   const data = (await res.json()) as Post;
+//   return { title: `post ${data.id}` };
+// }
 
-const page = async ({ params }: PageProps) => {
-  return <div>post {params.postid}</div>;
+const page = async ({ params }: any) => {
+  let id = params.postid;
+  const post = await prisma.post.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+  return <div>post: {post?.title}</div>;
 };
 
 export default page;
